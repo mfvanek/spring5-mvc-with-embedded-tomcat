@@ -7,13 +7,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
+
 @RestController
 @RequestMapping("/test")
 public class HomeController {
 
-	@GetMapping
-	public ResponseEntity<Task> displayWelcomeMessage() {
-		Task task = new Task("Learn Reactive", "Reactive is an amazing paradigm.");
-		return new ResponseEntity<>(task, HttpStatus.OK);
-	}
+    @GetMapping
+    public ResponseEntity<Task> displayWelcomeMessage() {
+        Task task = new Task("Learn Reactive", "Reactive is an amazing paradigm. " + LocalDateTime.now());
+        return new ResponseEntity<>(task, HttpStatus.OK);
+    }
 }
