@@ -1,8 +1,10 @@
 # spring5-mvc-with-embedded-tomcat
 Spring 5 MVC demo app with embedded Tomcat
 
-## Useful Commands
+## Run
+http://localhost:8080/test
 
+## Useful Commands
 
 ```bash
 # create uber jar
