@@ -1,6 +1,6 @@
-package com.auth0.samples.controller;
+package io.github.mfvanek.spring5mvc.controller;
 
-import com.auth0.samples.model.Task;
+import io.github.mfvanek.spring5mvc.model.Task;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

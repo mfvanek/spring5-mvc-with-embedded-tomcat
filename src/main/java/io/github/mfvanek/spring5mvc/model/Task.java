@@ -1,4 +1,4 @@
-package com.auth0.samples.model;
+package io.github.mfvanek.spring5mvc.model;
 
 public class Task {
 	private String title;

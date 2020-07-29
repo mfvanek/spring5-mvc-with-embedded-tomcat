@@ -1,4 +1,4 @@
-group 'com.auth0.samples'
+group 'io.github.mfvanek'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
@@ -7,7 +7,7 @@ apply plugin: 'com.github.johnrengelman.shadow'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
-mainClassName = 'com.auth0.samples.Main'
+mainClassName = 'io.github.mfvanek.spring5mvc.Main'
 
 repositories {
     mavenCentral()

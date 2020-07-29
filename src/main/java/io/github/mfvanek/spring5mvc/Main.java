@@ -1,4 +1,4 @@
-package com.auth0.samples;
+package io.github.mfvanek.spring5mvc;
 
 import org.apache.catalina.startup.Tomcat;
 

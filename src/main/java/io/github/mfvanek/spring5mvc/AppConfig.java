@@ -1,4 +1,4 @@
-package com.auth0.samples;
+package io.github.mfvanek.spring5mvc;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +13,7 @@ import javax.servlet.ServletRegistration;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"com.auth0.samples"})
+@ComponentScan(basePackages = {"io.github.mfvanek.spring5mvc"})
 public class AppConfig implements WebApplicationInitializer {
 
 	@Override
