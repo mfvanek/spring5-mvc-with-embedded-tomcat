@@ -16,16 +16,24 @@ repositories {
     mavenLocal()
 }
 
+def lombokVersion = '1.18.12'
+def springVersion = '5.2.8.RELEASE'
+
 dependencies {
     compile 'org.apache.tomcat.embed:tomcat-embed-jasper:8.5.57'
-    compile 'org.springframework:spring-webmvc:5.2.8.RELEASE'
+    compile "org.springframework:spring-webmvc:${springVersion}"
     compile 'com.fasterxml.jackson.core:jackson-databind:2.11.1'
 
-    compileOnly 'org.projectlombok:lombok:1.18.12'
-    annotationProcessor 'org.projectlombok:lombok:1.18.12'
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
 
     compile 'ch.qos.logback:logback-core:1.2.3'
     compile 'org.slf4j:slf4j-api:1.7.30'
+
+    testCompile "org.springframework:spring-test:${springVersion}"
+    testCompile 'junit:junit:4.12'
+    testCompile 'com.jayway.jsonpath:json-path:2.4.0'
+    testCompile 'org.hamcrest:hamcrest:2.2'
 }
 
 buildscript {
