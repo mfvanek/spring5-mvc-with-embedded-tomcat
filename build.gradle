@@ -4,6 +4,7 @@ version '1.0-SNAPSHOT'
 apply plugin: 'java'
 apply plugin: 'application'
 apply plugin: 'com.github.johnrengelman.shadow'
+apply plugin: 'com.palantir.docker'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -11,12 +12,14 @@ mainClassName = 'io.github.mfvanek.spring5mvc.Main'
 
 repositories {
     mavenCentral()
+    jcenter()
+    mavenLocal()
 }
 
 dependencies {
-    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '8.5.57'
-    compile group: 'org.springframework', name: 'spring-webmvc', version: '5.2.8.RELEASE'
-    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.11.1'
+    compile 'org.apache.tomcat.embed:tomcat-embed-jasper:8.5.57'
+    compile 'org.springframework:spring-webmvc:5.2.8.RELEASE'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.11.1'
 
     compileOnly 'org.projectlombok:lombok:1.18.12'
     annotationProcessor 'org.projectlombok:lombok:1.18.12'
@@ -33,9 +36,18 @@ buildscript {
     }
     dependencies {
         classpath 'com.github.jengelman.gradle.plugins:shadow:4.0.0'
+        classpath 'com.palantir.gradle.docker:gradle-docker:0.25.0'
     }
 }
 
 shadowJar {
     mergeServiceFiles()
 }
+
+docker {
+    name "${project.name}:${project.version}"
+    dockerfile file('Dockerfile')
+    files "$buildDir/libs/"
+}
+
+docker.dependsOn build
