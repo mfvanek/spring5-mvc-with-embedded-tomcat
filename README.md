@@ -13,10 +13,10 @@ docker run --name spring5-mvc-with-embedded-tomcat -d -p 8080:8080 spring5-mvc-w
 
 ## Useful Commands
 
-```bash
-# create uber jar
-./gradlew clean shadowJar
+```
+# Create uber jar
+.\gradlew clean shadowJar
 
-# run uber jar
+# Run uber jar
 java -jar build/libs/spring5-mvc-with-embedded-tomcat-1.0-SNAPSHOT.jar
 ```

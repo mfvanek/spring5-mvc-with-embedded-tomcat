@@ -38,6 +38,7 @@ public class RequestController {
     @GetMapping(path = "/v1/welcome")
     public ResponseEntity<Task> displayWelcomeMessage() {
         Task task = new Task("Jaeger tracing demo", "Welcome from Spring MVC and Embedded Tomcat. " + LocalDateTime.now());
+        log.info("Task object {}", task);
         return new ResponseEntity<>(task, HttpStatus.OK);
     }
 }
