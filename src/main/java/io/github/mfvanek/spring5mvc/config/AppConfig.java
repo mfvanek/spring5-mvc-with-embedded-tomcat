@@ -1,4 +1,4 @@
-package io.github.mfvanek.spring5mvc;
+package io.github.mfvanek.spring5mvc.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -34,5 +34,4 @@ public class AppConfig implements WebApplicationInitializer {
         dispatcher.setLoadOnStartup(1);
         dispatcher.addMapping("/");
     }
-
 }

@@ -17,11 +17,19 @@ dependencies {
     compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '8.5.57'
     compile group: 'org.springframework', name: 'spring-webmvc', version: '5.2.8.RELEASE'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.11.1'
+
+    compileOnly 'org.projectlombok:lombok:1.18.12'
+    annotationProcessor 'org.projectlombok:lombok:1.18.12'
+
+    compile 'ch.qos.logback:logback-core:1.2.3'
+    compile 'org.slf4j:slf4j-api:1.7.30'
 }
 
 buildscript {
     repositories {
+        mavenCentral()
         jcenter()
+        mavenLocal()
     }
     dependencies {
         classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.1'
