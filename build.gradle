@@ -5,18 +5,20 @@ apply plugin: 'java'
 apply plugin: 'application'
 apply plugin: 'com.github.johnrengelman.shadow'
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 11
+targetCompatibility = 11
 mainClassName = 'io.github.mfvanek.spring5mvc.Main'
 
 repositories {
     mavenCentral()
+    jcenter()
+    mavenLocal()
 }
 
 dependencies {
-    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '8.5.57'
-    compile group: 'org.springframework', name: 'spring-webmvc', version: '5.2.8.RELEASE'
-    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.11.1'
+    compile 'org.apache.tomcat.embed:tomcat-embed-jasper:8.5.57'
+    compile 'org.springframework:spring-webmvc:5.2.8.RELEASE'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.11.1'
 
     compileOnly 'org.projectlombok:lombok:1.18.12'
     annotationProcessor 'org.projectlombok:lombok:1.18.12'
