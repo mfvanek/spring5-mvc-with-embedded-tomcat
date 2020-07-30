@@ -6,8 +6,8 @@ apply plugin: 'application'
 apply plugin: 'com.github.johnrengelman.shadow'
 apply plugin: 'com.palantir.docker'
 
-sourceCompatibility = 1.9
-targetCompatibility = 1.9
+sourceCompatibility = 10
+targetCompatibility = 10
 mainClassName = 'io.github.mfvanek.spring5mvc.Main'
 
 repositories {
@@ -47,7 +47,7 @@ buildscript {
         mavenLocal()
     }
     dependencies {
-        classpath 'com.github.jengelman.gradle.plugins:shadow:4.0.0'
+        classpath 'com.github.jengelman.gradle.plugins:shadow:4.0.4'
         classpath 'com.palantir.gradle.docker:gradle-docker:0.25.0'
     }
 }
