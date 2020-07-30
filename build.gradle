@@ -20,20 +20,23 @@ def lombokVersion = '1.18.12'
 def springVersion = '5.2.8.RELEASE'
 
 dependencies {
-    compile 'org.apache.tomcat.embed:tomcat-embed-jasper:8.5.57'
-    compile "org.springframework:spring-webmvc:${springVersion}"
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.11.1'
+    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:8.5.57'
+    implementation "org.springframework:spring-webmvc:${springVersion}"
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.1'
+    implementation 'io.opentracing:opentracing-api:0.33.0'
 
     compileOnly "org.projectlombok:lombok:${lombokVersion}"
     annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
 
-    compile 'ch.qos.logback:logback-core:1.2.3'
-    compile 'org.slf4j:slf4j-api:1.7.30'
+    implementation 'ch.qos.logback:logback-core:1.2.3'
+    implementation 'org.slf4j:slf4j-api:1.7.30'
 
-    testCompile "org.springframework:spring-test:${springVersion}"
-    testCompile 'junit:junit:4.13'
-    testCompile 'com.jayway.jsonpath:json-path:2.4.0'
-    testCompile 'org.hamcrest:hamcrest:2.2'
+    implementation 'io.springfox:springfox-swagger2:3.0.0'
+
+    testImplementation "org.springframework:spring-test:${springVersion}"
+    testImplementation 'junit:junit:4.13'
+    testImplementation 'com.jayway.jsonpath:json-path:2.4.0'
+    testImplementation 'org.hamcrest:hamcrest:2.2'
 }
 
 test {
