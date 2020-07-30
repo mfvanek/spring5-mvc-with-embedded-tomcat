@@ -13,5 +13,5 @@ Spring 5 MVC demo app with embedded Tomcat (without Spring Boot!)
 ./gradlew clean shadowJar
 
 # run uber jar
-java -jar build/libs/spring5-mvc-with-embedded-tomcat-1.0-SNAPSHOT-all.jar
+java -jar build/libs/spring5-mvc-with-embedded-tomcat-1.0-SNAPSHOT.jar
 ```
