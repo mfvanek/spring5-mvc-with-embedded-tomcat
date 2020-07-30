@@ -31,9 +31,13 @@ dependencies {
     compile 'org.slf4j:slf4j-api:1.7.30'
 
     testCompile "org.springframework:spring-test:${springVersion}"
-    testCompile 'junit:junit:4.12'
+    testCompile 'junit:junit:4.13'
     testCompile 'com.jayway.jsonpath:json-path:2.4.0'
     testCompile 'org.hamcrest:hamcrest:2.2'
+}
+
+test {
+    useJUnit()
 }
 
 buildscript {
