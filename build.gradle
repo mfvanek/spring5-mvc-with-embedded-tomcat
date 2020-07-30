@@ -32,7 +32,7 @@ buildscript {
         mavenLocal()
     }
     dependencies {
-        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.1'
+        classpath 'com.github.jengelman.gradle.plugins:shadow:4.0.0'
     }
 }
 
