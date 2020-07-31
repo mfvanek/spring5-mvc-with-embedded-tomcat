@@ -1,5 +1,5 @@
 # spring5-mvc-with-embedded-tomcat
-Spring 5 MVC demo app with embedded Tomcat (without Spring Boot!)
+Spring 5 MVC demo app with embedded Tomcat (without Spring Boot!) and OpenTracing
 
 ## Open in Browser
 * http://localhost:8080/api/v1/demo
