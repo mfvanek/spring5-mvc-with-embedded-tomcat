@@ -9,7 +9,6 @@ Spring 5 MVC demo app with embedded Tomcat (without Spring Boot!)
 ## Swagger
 * http://localhost:8080/v2/api-docs
 
-
 ## Run in Docker
 ```
 docker run --name spring5-mvc-with-embedded-tomcat -d -p 8080:8080 spring5-mvc-with-embedded-tomcat:1.0-SNAPSHOT

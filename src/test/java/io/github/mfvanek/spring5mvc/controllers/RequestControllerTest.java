@@ -1,7 +1,6 @@
 package io.github.mfvanek.spring5mvc.controllers;
 
 import io.github.mfvanek.spring5mvc.config.AppConfig;
-import io.github.mfvanek.spring5mvc.config.SwaggerConfig;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {AppConfig.class, SwaggerConfig.class})
+@ContextConfiguration(classes = {AppConfig.class})
 @WebAppConfiguration
 public class RequestControllerTest {
 
