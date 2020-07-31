@@ -5,7 +5,7 @@ import org.apache.catalina.startup.Tomcat;
 import java.io.File;
 import java.io.IOException;
 
-public class Main {
+public class TracingSpringMvcDemoApp {
 
     private static final int PORT = getPort();
 
