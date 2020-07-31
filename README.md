@@ -12,6 +12,8 @@ Spring 5 MVC demo app with embedded Tomcat (without Spring Boot!) and OpenTracin
 ## Run in Docker
 ```
 docker run --name spring5-mvc-with-embedded-tomcat -d -p 8080:8080 spring5-mvc-with-embedded-tomcat:1.0-SNAPSHOT
+or
+docker run --name spring5-mvc-with-embedded-tomcat -d -p 8080:8080 localhost:5000/spring5-mvc-with-embedded-tomcat:1.0-SNAPSHOT
 ```
 
 ## Run Jaeger in Docker
@@ -29,4 +31,10 @@ Jaeger UI will start at `http://localhost:16686`
 
 # Run uber jar
 java -jar build/libs/spring5-mvc-with-embedded-tomcat-1.0-SNAPSHOT.jar
+or
+mvn spring-boot:run
 ```
+
+## Build Docker image
+
+`mvn clean package docker:build`
