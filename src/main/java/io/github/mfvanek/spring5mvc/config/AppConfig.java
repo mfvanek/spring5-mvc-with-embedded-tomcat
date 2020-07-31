@@ -2,6 +2,7 @@ package io.github.mfvanek.spring5mvc.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
@@ -14,6 +15,7 @@ import javax.servlet.ServletRegistration;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = {"io.github.mfvanek.spring5mvc"})
+@Import({SwaggerConfig.class, TracingConfig.class})
 public class AppConfig implements WebApplicationInitializer {
 
     @Override
