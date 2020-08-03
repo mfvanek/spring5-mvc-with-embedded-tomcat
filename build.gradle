@@ -8,7 +8,7 @@ apply plugin: 'com.palantir.docker'
 
 sourceCompatibility = 11
 targetCompatibility = 11
-mainClassName = 'io.github.mfvanek.spring5mvc.TracingSpringMvcDemoApp'
+mainClassName = 'io.github.mfvanek.spring5mvc.TracingSpringMvcDemoAppWithJetty'
 
 repositories {
     mavenCentral()
