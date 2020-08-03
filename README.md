@@ -33,6 +33,12 @@ Jaeger UI will start at `http://localhost:16686`
 java -jar build/libs/spring5-mvc-with-embedded-tomcat-1.0-SNAPSHOT.jar
 or
 mvn spring-boot:run
+or
+java -jar target/spring5-mvc-with-embedded-tomcat-spring-boot.jar
+or
+java -jar target/spring5-mvc-with-embedded-tomcat-jar-with-dependencies.jar
+or
+java -jar target\spring5-mvc-with-embedded-tomcat-1.0-SNAPSHOT-shaded.jar
 ```
 
 ## Build Docker image

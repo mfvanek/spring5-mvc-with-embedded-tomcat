@@ -28,7 +28,6 @@ public class TracingSpringMvcDemoApp {
         return 8080;
     }
 
-    // based on AbstractEmbeddedServletContainerFactory
     private static String createTempDir() {
         try {
             File tempDir = File.createTempFile("tomcat.", "." + PORT);
