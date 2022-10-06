@@ -83,4 +83,16 @@ public class RequestControllerTest {
 
         assertEquals("application/json", mvcResult.getResponse().getContentType());
     }
+
+    @Test
+    public void apiDocsShouldWork() throws Exception {
+        MvcResult mvcResult = this.mockMvc.perform(get("/v2/api-docs"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.swagger").value("2.0"))
+                .andExpect(jsonPath("$.definitions").exists())
+                .andReturn();
+
+        assertEquals("application/json", mvcResult.getResponse().getContentType());
+    }
 }
