@@ -30,21 +30,21 @@ def swaggerVersion = '3.0.0'
 dependencies {
     implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:8.5.57'
     implementation "org.springframework:spring-webmvc:${springVersion}"
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.1'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.6.1'
     implementation 'com.google.code.findbugs:jsr305:3.0.2'
 
     implementation "io.jaegertracing:jaeger-core:${jaegerVersion}"
     implementation "io.jaegertracing:jaeger-thrift:${jaegerVersion}"
 
-    implementation 'ch.qos.logback:logback-classic:1.2.3'
-    implementation 'org.slf4j:slf4j-api:1.7.30'
+    implementation 'ch.qos.logback:logback-classic:1.2.11'
+    implementation 'org.slf4j:slf4j-api:1.7.36'
 
     implementation "io.springfox:springfox-swagger2:${swaggerVersion}"
     implementation "io.springfox:springfox-swagger-ui:${swaggerVersion}"
 
     testImplementation "org.springframework:spring-test:${springVersion}"
-    testImplementation 'junit:junit:4.13'
-    testImplementation 'com.jayway.jsonpath:json-path:2.4.0'
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'com.jayway.jsonpath:json-path:2.7.0'
     testImplementation 'org.hamcrest:hamcrest:2.2'
 }
 

@@ -27,8 +27,8 @@ Jaeger UI will start at `http://localhost:16686`
 
 ```
 # Create uber jar
-.\gradlew clean shadowJar
+./gradlew clean shadowJar
 
 # Run uber jar
-java -jar build/libs/spring5-mvc-with-embedded-tomcat-1.0-SNAPSHOT.jar
+java -jar build/libs/spring5-mvc-with-embedded-tomcat-1.0-SNAPSHOT-all.jar
 ```
