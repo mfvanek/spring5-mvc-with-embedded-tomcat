@@ -25,7 +25,7 @@ repositories {
     mavenCentral()
 }
 
-def springVersion = '5.3.24'
+def springVersion = '6.0.7'
 def jaegerVersion = '1.3.1'
 def swaggerVersion = '3.0.0'
 
