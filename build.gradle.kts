@@ -16,7 +16,7 @@ java {
 }
 
 application {
-    mainClassName = "io.github.mfvanek.spring5mvc.TracingSpringMvcDemoApp"
+    mainClass.set("io.github.mfvanek.spring5mvc.TracingSpringMvcDemoApp")
 }
 
 repositories {
@@ -24,9 +24,9 @@ repositories {
     mavenCentral()
 }
 
-def springVersion = "5.3.24"
-def jaegerVersion = "1.3.1"
-def swaggerVersion = "3.0.0"
+val springVersion = "5.3.24"
+val jaegerVersion = "1.3.1"
+val swaggerVersion = "3.0.0"
 
 dependencies {
     implementation("org.apache.tomcat.embed:tomcat-embed-jasper:8.5.84")
@@ -52,23 +52,26 @@ dependencies {
     testImplementation("org.hamcrest:hamcrest:2.2")
 }
 
-test {
-    useJUnitPlatform()
-}
+tasks {
+    withType<Test>().configureEach {
+        useJUnitPlatform()
+    }
 
-jar {
-    archiveClassifier = "default"
-}
+    jar {
+        archiveClassifier.set("default")
+    }
 
-shadowJar {
-    mergeServiceFiles()
-    archiveClassifier = null
+    shadowJar {
+        mergeServiceFiles()
+        val classifier : String? = null
+        archiveClassifier.set(classifier)
+    }
 }
 
 docker {
     javaApplication {
         baseImage.set("eclipse-temurin:17.0.7_7-jre-focal")
         maintainer.set("Ivan Vakhrushev")
-        images.set(["${project.name}:${project.version}", "${project.name}:latest"])
+        images.set(listOf("${project.name}:${project.version}", "${project.name}:latest"))
     }
 }
