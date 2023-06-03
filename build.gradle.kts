@@ -24,18 +24,16 @@ repositories {
     mavenCentral()
 }
 
-val springVersion = "5.3.24"
-val jaegerVersion = "1.3.1"
 val swaggerVersion = "3.0.0"
 
 dependencies {
-    implementation("org.apache.tomcat.embed:tomcat-embed-jasper:8.5.84")
-    implementation("org.springframework:spring-webmvc:${springVersion}")
+    implementation("org.apache.tomcat.embed:tomcat-embed-jasper:8.5.89")
+    implementation(libs.spring.webmvc)
     implementation("com.fasterxml.jackson.core:jackson-databind:2.15.1")
     implementation("com.google.code.findbugs:jsr305:3.0.2")
 
-    implementation("io.jaegertracing:jaeger-core:${jaegerVersion}")
-    implementation("io.jaegertracing:jaeger-thrift:${jaegerVersion}")
+    implementation(libs.jaeger.core)
+    implementation(libs.jaeger.thrift)
 
     implementation("ch.qos.logback:logback-classic:1.4.7")
     implementation("org.slf4j:slf4j-api:2.0.7")
@@ -43,11 +41,11 @@ dependencies {
     implementation("io.springfox:springfox-swagger2:${swaggerVersion}")
     implementation("io.springfox:springfox-swagger-ui:${swaggerVersion}")
 
-    testImplementation(enforcedPlatform("org.junit:junit-bom:5.9.3"))
+    testImplementation(platform("org.junit:junit-bom:5.9.3"))
     testImplementation("org.junit.jupiter:junit-jupiter-api")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
     testImplementation("org.assertj:assertj-core:3.24.2")
-    testImplementation("org.springframework:spring-test:${springVersion}")
+    testImplementation(libs.spring.test)
     testImplementation("com.jayway.jsonpath:json-path:2.8.0")
     testImplementation("org.hamcrest:hamcrest:2.2")
 }
