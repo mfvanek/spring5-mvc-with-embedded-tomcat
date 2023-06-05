@@ -2,7 +2,7 @@ plugins {
     id("application")
     id("com.github.johnrengelman.shadow") version "8.1.1"
     id("com.bmuschko.docker-java-application") version "9.3.1"
-    id("io.freefair.lombok") version "8.0.1"
+    id("io.freefair.lombok") version "8.1.0"
 }
 
 group = "io.github.mfvanek"
@@ -29,13 +29,13 @@ val swaggerVersion = "3.0.0"
 dependencies {
     implementation("org.apache.tomcat.embed:tomcat-embed-jasper:8.5.89")
     implementation(libs.spring.webmvc)
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.15.1")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.15.2")
     implementation("com.google.code.findbugs:jsr305:3.0.2")
 
     implementation(libs.jaeger.core)
     implementation(libs.jaeger.thrift)
 
-    implementation("ch.qos.logback:logback-classic:1.4.7")
+    implementation("ch.qos.logback:logback-classic:1.4.8")
     implementation("org.slf4j:slf4j-api:2.0.7")
 
     implementation("io.springfox:springfox-swagger2:${swaggerVersion}")
