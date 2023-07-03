@@ -2,7 +2,7 @@ plugins {
     id("application")
     id("com.github.johnrengelman.shadow") version "8.1.1"
     id("com.bmuschko.docker-java-application") version "9.3.1"
-    id("io.freefair.lombok") version "8.0.1"
+    id("io.freefair.lombok") version "8.1.0"
 }
 
 group = "io.github.mfvanek"
