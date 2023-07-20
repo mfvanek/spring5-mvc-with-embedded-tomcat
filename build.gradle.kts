@@ -1,8 +1,11 @@
+import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
+
 plugins {
     id("application")
     id("com.github.johnrengelman.shadow") version "8.1.1"
     id("com.bmuschko.docker-java-application") version "9.3.1"
     id("io.freefair.lombok") version "8.1.0"
+    id("com.github.ben-manes.versions") version "0.47.0"
 }
 
 group = "io.github.mfvanek"
@@ -27,7 +30,7 @@ repositories {
 val swaggerVersion = "3.0.0"
 
 dependencies {
-    implementation("org.apache.tomcat.embed:tomcat-embed-jasper:8.5.89")
+    implementation("org.apache.tomcat.embed:tomcat-embed-jasper:9.0.78")
     implementation(libs.spring.webmvc)
     implementation("com.fasterxml.jackson.core:jackson-databind:2.15.2")
     implementation("com.google.code.findbugs:jsr305:3.0.2")
@@ -71,5 +74,21 @@ docker {
         baseImage.set("eclipse-temurin:17.0.7_7-jre-focal")
         maintainer.set("Ivan Vakhrushev")
         images.set(listOf("${project.name}:${project.version}", "${project.name}:latest"))
+    }
+}
+
+fun isNonStable(version: String): Boolean {
+    val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.uppercase().contains(it) }
+    val regex = "^[0-9,.v-]+(-r)?$".toRegex()
+    val isStable = stableKeyword || regex.matches(version)
+    return isStable.not()
+}
+
+tasks.named<DependencyUpdatesTask>("dependencyUpdates").configure {
+    checkForGradleUpdate = true
+    gradleReleaseChannel = "current"
+    checkConstraints = true
+    rejectVersionIf {
+        isNonStable(candidate.version)
     }
 }

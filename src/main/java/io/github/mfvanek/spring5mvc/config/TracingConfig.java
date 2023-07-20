@@ -1,44 +1,45 @@
 package io.github.mfvanek.spring5mvc.config;
 
-import io.jaegertracing.internal.JaegerTracer;
-import io.jaegertracing.internal.MDCScopeManager;
-import io.jaegertracing.internal.reporters.CompositeReporter;
-import io.jaegertracing.internal.reporters.LoggingReporter;
-import io.jaegertracing.internal.reporters.RemoteReporter;
+import io.jaegertracing.Configuration.ReporterConfiguration;
+import io.jaegertracing.Configuration.SamplerConfiguration;
+import io.jaegertracing.Configuration.SenderConfiguration;
 import io.jaegertracing.internal.samplers.ConstSampler;
-import io.jaegertracing.spi.Reporter;
-import io.jaegertracing.thrift.internal.senders.UdpSender;
 import io.opentracing.Tracer;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.Nonnull;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class TracingConfig {
 
     @Bean
-    public MDCScopeManager mdcScopeManager() {
-        return new MDCScopeManager.Builder()
-                .build();
+    SamplerConfiguration samplerConfig() {
+        return SamplerConfiguration.fromEnv()
+                .withType(ConstSampler.TYPE)
+                .withParam(1);
     }
 
     @Bean
-    public Reporter reporter() {
-        return new CompositeReporter(
-                new LoggingReporter(),
-                new RemoteReporter.Builder()
-                        .withSender(new UdpSender())
-                        .build()
-        );
+    ReporterConfiguration reporterConfig() {
+        return ReporterConfiguration.fromEnv()
+                .withLogSpans(true);
     }
 
     @Bean
-    public Tracer tracer(@Nonnull MDCScopeManager mdcScopeManager, @Nonnull Reporter reporter) {
-        return new JaegerTracer.Builder("spring5-mvc-with-embedded-tomcat")
-                .withSampler(new ConstSampler(true))
-                .withScopeManager(mdcScopeManager)
-                .withReporter(reporter)
-                .build();
+    public Tracer tracer(@Nonnull SamplerConfiguration samplerConfig,
+                         @Nonnull ReporterConfiguration reporterConfig) {
+//        return new JaegerTracer.Builder("spring5-mvc-with-embedded-tomcat")
+//                .withSampler(new ConstSampler(true))
+//                .withScopeManager(mdcScopeManager)
+//                .withReporter(reporter)
+//                .build();
+
+        var config = new io.jaegertracing.Configuration("spring5-mvc-with-embedded-tomcat")
+                .withSampler(samplerConfig)
+                .withReporter(reporterConfig);
+
+        return config.getTracer();
     }
 }

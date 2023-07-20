@@ -10,12 +10,12 @@ public class TracingSpringMvcDemoApp {
     private static final int PORT = getPort();
 
     public static void main(String[] args) throws Exception {
-        String appBase = ".";
-        Tomcat tomcat = new Tomcat();
+        final Tomcat tomcat = new Tomcat();
         tomcat.setBaseDir(createTempDir());
         tomcat.setPort(PORT);
-        tomcat.getHost().setAppBase(appBase);
-        tomcat.addWebapp("", ".");
+        tomcat.getConnector();
+        tomcat.getHost().setAppBase(".");
+        tomcat.addWebapp("/", ".");
         tomcat.start();
         tomcat.getServer().await();
     }
@@ -28,7 +28,7 @@ public class TracingSpringMvcDemoApp {
         return 8080;
     }
 
-    // based on AbstractEmbeddedServletContainerFactory
+    // based on https://github.com/joansmith/spring-boot/blob/410dedc5675121da87cdbb83a53ad43179982407/spring-boot/src/main/java/org/springframework/boot/context/embedded/AbstractEmbeddedServletContainerFactory.java#L172
     private static String createTempDir() {
         try {
             File tempDir = File.createTempFile("tomcat.", "." + PORT);
@@ -38,8 +38,7 @@ public class TracingSpringMvcDemoApp {
             return tempDir.getAbsolutePath();
         } catch (IOException ex) {
             throw new RuntimeException(
-                    "Unable to create tempDir. java.io.tmpdir is set to " + System.getProperty("java.io.tmpdir"),
-                    ex
+                    "Unable to create tempDir. java.io.tmpdir is set to " + System.getProperty("java.io.tmpdir"), ex
             );
         }
     }
