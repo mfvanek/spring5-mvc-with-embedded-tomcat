@@ -1,10 +1,16 @@
 package io.github.mfvanek.spring5mvc.controllers;
 
 import io.github.mfvanek.spring5mvc.config.WebConfig;
+import io.jaegertracing.internal.reporters.LoggingReporter;
+import io.jaegertracing.internal.samplers.ConstSampler;
+import io.opentracing.Tracer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.mock.web.MockServletContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -24,7 +30,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = {WebConfig.class})
+@ContextConfiguration(classes = {WebConfig.class, RequestControllerTest.TestTracingConfig.class})
 @WebAppConfiguration
 class RequestControllerTest {
 
@@ -99,5 +105,19 @@ class RequestControllerTest {
 
         assertThat(mvcResult.getResponse().getContentType())
                 .isEqualTo("application/json");
+    }
+
+    @Configuration
+    static class TestTracingConfig {
+
+        @Primary
+        @Bean
+        public Tracer testTracer() {
+            return new io.jaegertracing.Configuration("spring5-mvc-with-embedded-tomcat")
+                    .getTracerBuilder()
+                    .withSampler(new ConstSampler(true))
+                    .withReporter(new LoggingReporter())
+                    .build();
+        }
     }
 }
