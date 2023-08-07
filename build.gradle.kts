@@ -4,7 +4,7 @@ plugins {
     id("application")
     id("com.github.johnrengelman.shadow") version "8.1.1"
     id("com.bmuschko.docker-java-application") version "9.3.2"
-    id("io.freefair.lombok") version "8.1.0"
+    id("io.freefair.lombok") version "8.2.2"
     id("com.github.ben-manes.versions") version "0.47.0"
 }
 
@@ -38,7 +38,7 @@ dependencies {
     implementation(libs.jaeger.core)
     implementation(libs.jaeger.thrift)
 
-    implementation("ch.qos.logback:logback-classic:1.4.8")
+    implementation("ch.qos.logback:logback-classic:1.4.11")
     implementation("org.slf4j:slf4j-api:2.0.7")
 
     implementation("io.springfox:springfox-swagger2:${swaggerVersion}")
