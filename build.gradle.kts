@@ -3,7 +3,7 @@ import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 plugins {
     id("application")
     id("com.github.johnrengelman.shadow") version "8.1.1"
-    id("com.bmuschko.docker-java-application") version "9.3.2"
+    id("com.bmuschko.docker-java-application") version "9.3.3"
     id("io.freefair.lombok") version "8.3"
     id("com.github.ben-manes.versions") version "0.48.0"
 }
