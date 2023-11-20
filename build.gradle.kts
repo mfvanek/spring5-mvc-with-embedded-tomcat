@@ -30,7 +30,7 @@ repositories {
 val swaggerVersion = "3.0.0"
 
 dependencies {
-    implementation("org.apache.tomcat.embed:tomcat-embed-jasper:9.0.78")
+    implementation("org.apache.tomcat.embed:tomcat-embed-jasper:10.1.16")
     implementation(libs.spring.webmvc)
     implementation("com.fasterxml.jackson.core:jackson-databind:2.15.3")
     implementation("com.google.code.findbugs:jsr305:3.0.2")
