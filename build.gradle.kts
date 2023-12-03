@@ -3,19 +3,23 @@ import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 plugins {
     id("application")
     id("com.github.johnrengelman.shadow") version "8.1.1"
-    id("com.bmuschko.docker-java-application") version "9.3.7"
+    id("com.bmuschko.docker-java-application") version "9.4.0"
     id("io.freefair.lombok") version "8.4"
     id("com.github.ben-manes.versions") version "0.50.0"
 }
 
 group = "io.github.mfvanek"
-version = "2.0.0"
+version = "2.0.1"
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
     withJavadocJar()
     withSourcesJar()
+}
+tasks.withType<JavaCompile>().configureEach {
+    options.compilerArgs.add("-parameters")
 }
 
 application {
@@ -38,7 +42,7 @@ dependencies {
     implementation(libs.jaeger.core)
     implementation(libs.jaeger.thrift)
 
-    implementation("ch.qos.logback:logback-classic:1.4.11")
+    implementation("ch.qos.logback:logback-classic:1.4.14")
     implementation("org.slf4j:slf4j-api:2.0.9")
 
     implementation("io.springfox:springfox-swagger2:${swaggerVersion}")
@@ -54,6 +58,10 @@ dependencies {
 }
 
 tasks {
+    wrapper {
+        gradleVersion = "8.5"
+    }
+
     withType<Test>().configureEach {
         useJUnitPlatform()
     }
