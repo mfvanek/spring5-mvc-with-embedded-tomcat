@@ -8,11 +8,6 @@ dependencyResolutionManagement {
                     .versionRef(jaegerVersion)
             library("jaeger-thrift", "io.jaegertracing", "jaeger-thrift")
                     .versionRef(jaegerVersion)
-            val springVersion = version("springframework", "5.3.29")
-            library("spring-webmvc", "org.springframework", "spring-webmvc")
-                    .versionRef(springVersion)
-            library("spring-test", "org.springframework", "spring-test")
-                    .versionRef(springVersion)
         }
     }
 }

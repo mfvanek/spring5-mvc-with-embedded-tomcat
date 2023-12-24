@@ -29,9 +29,9 @@ public class RequestController {
     public ResponseEntity<Object> log() {
         final Span span = tracer.buildSpan("log").start();
         try (Scope ignored = tracer.activateSpan(span)) {
-            final String logMessage = "Add log entry at " + LocalDateTime.now();
-            log.info(logMessage);
-            return ResponseEntity.ok(logMessage);
+            final var now = LocalDateTime.now();
+            log.info("Add log entry at {}", now);
+            return ResponseEntity.ok("Add log entry at " + now);
         } finally {
             span.finish();
         }
