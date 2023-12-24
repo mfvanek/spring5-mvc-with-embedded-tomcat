@@ -1,4 +1,5 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
+import net.ltgt.gradle.errorprone.errorprone
 
 plugins {
     id("application")
@@ -6,10 +7,11 @@ plugins {
     id("com.bmuschko.docker-java-application") version "9.4.0"
     id("io.freefair.lombok") version "8.4"
     id("com.github.ben-manes.versions") version "0.50.0"
+    id("net.ltgt.errorprone") version "3.1.0"
 }
 
 group = "io.github.mfvanek"
-version = "2.0.1"
+version = "2.0.2"
 
 java {
     toolchain {
@@ -20,6 +22,10 @@ java {
 }
 tasks.withType<JavaCompile>().configureEach {
     options.compilerArgs.add("-parameters")
+    options.errorprone {
+        disableWarningsInGeneratedCode.set(true)
+        disable("Slf4jLoggerShouldBeNonStatic")
+    }
 }
 
 application {
@@ -34,9 +40,10 @@ repositories {
 val swaggerVersion = "3.0.0"
 
 dependencies {
-    implementation("org.apache.tomcat.embed:tomcat-embed-jasper:9.0.78")
-    implementation(libs.spring.webmvc)
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.16.0")
+    implementation(platform("org.springframework:spring-framework-bom:5.3.31"))
+    implementation("org.apache.tomcat.embed:tomcat-embed-jasper:9.0.84")
+    implementation("org.springframework:spring-webmvc")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.16.1")
     implementation("com.google.code.findbugs:jsr305:3.0.2")
 
     implementation(libs.jaeger.core)
@@ -52,9 +59,12 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
     testImplementation("org.assertj:assertj-core:3.24.2")
-    testImplementation(libs.spring.test)
+    testImplementation("org.springframework:spring-test")
     testImplementation("com.jayway.jsonpath:json-path:2.8.0")
     testImplementation("org.hamcrest:hamcrest:2.2")
+
+    errorprone("com.google.errorprone:error_prone_core:2.24.0")
+    errorprone("jp.skypencil.errorprone.slf4j:errorprone-slf4j:0.1.21")
 }
 
 tasks {
