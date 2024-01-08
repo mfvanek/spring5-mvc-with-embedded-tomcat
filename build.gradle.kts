@@ -63,7 +63,7 @@ dependencies {
     testImplementation("com.jayway.jsonpath:json-path:2.8.0")
     testImplementation("org.hamcrest:hamcrest:2.2")
 
-    errorprone("com.google.errorprone:error_prone_core:2.24.0")
+    errorprone("com.google.errorprone:error_prone_core:2.24.1")
     errorprone("jp.skypencil.errorprone.slf4j:errorprone-slf4j:0.1.22")
 }
 
