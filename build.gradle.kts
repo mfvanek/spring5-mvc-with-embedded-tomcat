@@ -64,7 +64,7 @@ dependencies {
     testImplementation("org.hamcrest:hamcrest:2.2")
 
     errorprone("com.google.errorprone:error_prone_core:2.24.0")
-    errorprone("jp.skypencil.errorprone.slf4j:errorprone-slf4j:0.1.21")
+    errorprone("jp.skypencil.errorprone.slf4j:errorprone-slf4j:0.1.22")
 }
 
 tasks {
