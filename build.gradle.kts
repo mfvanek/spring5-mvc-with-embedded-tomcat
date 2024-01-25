@@ -60,7 +60,7 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
     testImplementation("org.assertj:assertj-core:3.25.1")
     testImplementation("org.springframework:spring-test")
-    testImplementation("com.jayway.jsonpath:json-path:2.8.0")
+    testImplementation("com.jayway.jsonpath:json-path:2.9.0")
     testImplementation("org.hamcrest:hamcrest:2.2")
 
     errorprone("com.google.errorprone:error_prone_core:2.24.1")
