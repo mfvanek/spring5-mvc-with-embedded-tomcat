@@ -58,7 +58,7 @@ dependencies {
     testImplementation(platform("org.junit:junit-bom:5.10.2"))
     testImplementation("org.junit.jupiter:junit-jupiter-api")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
-    testImplementation("org.assertj:assertj-core:3.25.2")
+    testImplementation("org.assertj:assertj-core:3.25.3")
     testImplementation("org.springframework:spring-test")
     testImplementation("com.jayway.jsonpath:json-path:2.9.0")
     testImplementation("org.hamcrest:hamcrest:2.2")
