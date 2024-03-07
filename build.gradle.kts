@@ -49,7 +49,7 @@ dependencies {
     implementation(libs.jaeger.core)
     implementation(libs.jaeger.thrift)
 
-    implementation("ch.qos.logback:logback-classic:1.5.1")
+    implementation("ch.qos.logback:logback-classic:1.5.3")
     implementation("org.slf4j:slf4j-api:2.0.12")
 
     implementation("io.springfox:springfox-swagger2:${swaggerVersion}")
