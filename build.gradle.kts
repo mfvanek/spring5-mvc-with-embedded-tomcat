@@ -43,7 +43,7 @@ dependencies {
     implementation(platform("org.springframework:spring-framework-bom:5.3.31"))
     implementation("org.apache.tomcat.embed:tomcat-embed-jasper:9.0.84")
     implementation("org.springframework:spring-webmvc")
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.16.1")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.17.0")
     implementation("com.google.code.findbugs:jsr305:3.0.2")
 
     implementation(libs.jaeger.core)
